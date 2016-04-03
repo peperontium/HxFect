@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<!-- NMML reference: https://gist.github.com/1763850 -->
+	
+	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
+	<meta title="HxFect" package="HxFect" version="1.0.0" company="peperontium" />
+	
+	<!-- output -->
+	<app main="Main" file="HxFect" path="bin" />
+	
+	<window background="#444466" fps="60" />
+	<window width="860" height="640" unless="mobile" />
+	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
+	
+	<!-- classpath, haxe libs -->
+	<source path="src" />
+	<haxelib name="openfl" />
+	<!-- assets -->
+	<icon path="assets/openfl.svg" />
+	<assets path="assets/img" rename="img" />
+	<assets path="assets/resource" rename="resource" />
+	
+	<!-- edittor mode -->
+	<haxedef name="APP_EDITOR" />
+	
+	<!-- optimize output
+	<haxeflag name="-dce full" /> -->
+	
+</project>
