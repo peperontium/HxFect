@@ -218,19 +218,19 @@ class TexturePanel extends Sprite{
 	}
 	
 	public function writeOut():String{
-		var buf : String = "[tiles]\n";
+		var buf : String = "[tiles]\r\n";
 		for(tilePath in _tilesheetCache.keys()){
-			buf += '[tile]\n$tilePath\n';
+			buf += '[tile]\r\n$tilePath\r\n';
 			var tileCache = _tilesheetCache.get(tilePath);
 			for (i in 0...tileCache.tileRects.length) {
 				var rect = tileCache.tileRects[i];
 				var point = tileCache.tileCenters[i];
-				buf += '${rect.x},${rect.y},${rect.width},${rect.height},${point.x},${point.y}\n';
+				buf += '${rect.x},${rect.y},${rect.width},${rect.height},${point.x},${point.y}\r\n';
 			}
-			buf += '[/tile]\n';
+			buf += '[/tile]\r\n';
 		}
 		
-		buf += "[/tiles]\n";
+		buf += "[/tiles]\r\n";
 		return buf;
 	}
 }

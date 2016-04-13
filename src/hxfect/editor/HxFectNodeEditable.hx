@@ -141,35 +141,35 @@ class HxFectNodeEditable extends HxFectNode{
 	
 	public function writeNode():String{
 		
-		var buf = "[node]\n";
+		var buf = "[node]\r\n";
 		
-		buf += '$_name\n';
-		buf += '$_tileName,$tileID,$_zDepth\n';
+		buf += '$_name\r\n';
+		buf += '$_tileName,$tileID,$_zDepth\r\n';
 		
-		buf += '[kfScaling]\n';
+		buf += '[kfScaling]\r\n';
 		for(frame in _keyframe._scaling.keys()){
-			buf += '$frame,${_keyframe._scaling.get(frame).x},${_keyframe._scaling.get(frame).y}\n';
+			buf += '$frame,${_keyframe._scaling.get(frame).x},${_keyframe._scaling.get(frame).y}\r\n';
 		}
-		buf += '[/kfScaling]\n';
+		buf += '[/kfScaling]\r\n';
 		
-		buf += '[kfRotation]\n';
+		buf += '[kfRotation]\r\n';
 		for(frame in _keyframe._rotation.keys()){
-			buf += '$frame,${_keyframe._rotation.get(frame)}\n';
+			buf += '$frame,${_keyframe._rotation.get(frame)}\r\n';
 		}
-		buf += '[/kfRotation]\n';
+		buf += '[/kfRotation]\r\n';
 		
-		buf += '[kfTranslation]\n';
+		buf += '[kfTranslation]\r\n';
 		for(frame in _keyframe._translation.keys()){
-			buf += '$frame,${_keyframe._translation.get(frame).x},${_keyframe._translation.get(frame).y}\n';
+			buf += '$frame,${_keyframe._translation.get(frame).x},${_keyframe._translation.get(frame).y}\r\n';
 		}
-		buf += '[/kfTranslation]\n';
+		buf += '[/kfTranslation]\r\n';
 		
 		if(_childrenNodeEditable.isEmpty() == false){
 			for(childNode in _childrenNodeEditable){
 				buf += childNode.writeNode();
 			}
 		}
-		buf += "[/node]\n";
+		buf += "[/node]\r\n";
 		return buf;
 	}
 	

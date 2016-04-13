@@ -74,7 +74,7 @@ class HxFectNode {
 	}
 	
 	
-	private static function _GetKeyFrame(data:TextFileReader):KeyFrame{
+	private static function _GetKeyFrameFromData(data:TextFileReader):KeyFrame{
 		var vals:Array<String> = [];
 		
 		var scalingKF = new OrderedIntMap<Point>();
@@ -126,7 +126,7 @@ class HxFectNode {
 		node._zDepth = Std.parseInt(vals[2]);
 		
 		
-		node._keyframe = _GetKeyFrame(data);
+		node._keyframe = _GetKeyFrameFromData(data);
 		
 		while(data.readLine() != "[/node]"){
 			node._childrenNode.add(CreateHxFectNodeTreeFromData(data,tileTable,managerEffect));

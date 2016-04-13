@@ -55,12 +55,12 @@ class HxFectEditable extends HxFect {
 	
 	
 	public function writeOut():String{
-		var buf = "[effect]\n";
-		buf += '${ if(_isLoop){1;}else{0;} }';
+		var buf = "[effect]\r\n";
+		buf += '${ if(_isLoop){1;}else{0;} }\r\n';
 		
 		buf += cast(_rootNode, HxFectNodeEditable).writeNode();
 		
-		buf += "[/effect]\n";
+		buf += "[/effect]\r\n";
 		
 		return buf;
 	}

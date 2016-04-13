@@ -18,7 +18,7 @@ class KeyFrame{
 	#else
 	private var _translation: OrderedIntMap<Point>;
 	private var _scaling 	: OrderedIntMap<Point>;
-	///	ラジアン回転角
+	///	degree回転角
 	private var _rotation	: OrderedIntMap<Float>;
 	#end
 	
@@ -71,7 +71,7 @@ class KeyFrame{
 		
 		_transformMatrix.identity();
 		_transformMatrix.scale(scaling.x,scaling.y);
-		_transformMatrix.rotate(rotation);
+		_transformMatrix.rotate(MathUtil.toRadian(rotation));
 		_transformMatrix.translate(translate.x, translate.y);
 		
 		return _transformMatrix;
