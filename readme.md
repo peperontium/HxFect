@@ -9,27 +9,27 @@ Tilesheet‚ð—p‚¢‚½ƒXƒvƒ‰ƒCƒgƒAƒjƒ[ƒVƒ‡ƒ“ƒGƒfƒBƒ^‚Å‚·B‚»‚Ì‚Ü‚ÜƒRƒ“ƒpƒCƒ‹‚·‚é‚Æƒ
 ## ƒGƒfƒBƒ^Žg‚¢•û
 “Ç‚Ýž‚Ý‚Í‘Sƒvƒ‰ƒbƒgƒtƒH[ƒ€‚Å‚Å‚«‚Ü‚·‚ªAƒf[ƒ^•Û‘¶‚Íneko,cpp ‚Å‚Ì‚Ýs‚¦‚Ü‚·B  
 1.tilesheet‚ÌÝ’è
-	ƒ^ƒCƒ‹ƒV[ƒg‚Ì‰æ‘œƒpƒX‚ð“ü—ÍA«ƒ{ƒ^ƒ“‚Å“Ç‚Ýž‚ÞBtileID‚ð-/+‚ÅŒˆ‚ß‚é
-	ŽŸ‚ÉTileRect‚ð“ü—ÍAapply rect ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚ÄŠm’è
-	”CˆÓ‚ÅCenterPoint‚ð“ü—ÍAapply center ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚ÄŠm’è
-	‚»‚Ì‰º‚ÍŒ»Ý‚ÌtileIDƒ^ƒCƒ‹‚ÌƒvƒŒƒrƒ…[‚Å‚·B
-	![](img/tile.png)
-2.ƒAƒjƒ[ƒVƒ‡ƒ“ƒm[ƒh‚Ìì¬
-	Žqƒm[ƒh‚ð’Ç‰Á‚µ‚½‚¢eƒm[ƒh‚ðƒNƒŠƒbƒN‚µA‰º‚Ì•û‚Ìadd‚ð‰Ÿ‚µ‚ÄŽqƒm[ƒh‚ð’Ç‰Á  
-	ƒm[ƒh–¼‚Íƒm[ƒh‚ªƒAƒNƒeƒBƒu‚É‚È‚Á‚Ä‚¢‚é‚Æ‚«(ˆÃ‚¢‚Æ‚«)‚ÉƒL[“ü—Í‚Å•ÏX‚Å‚«‚Ü‚·  
-	Šeƒm[ƒh‚É‚Í1‚Â‚Ìtilesheet/tileID‚ðŠ„‚è“–‚Ä‚ç‚ê‚Ü‚·B‰æ‘œƒpƒX–¼‚Æid‚ð“ü—Í‚µAapply tile ‚ð‰Ÿ‚·‚ÆŠ„‚è“–‚Ä‚ª‚Å‚«‚Ü‚·  
-	ƒm[ƒh‚²‚Æ‚Ì•`‰æ‡‚ÍÅ‰º•”‚ÌZ=()‚ð•ÏX‚·‚é‚±‚Æ‚Å•ÏX‚Å‚«‚Ü‚·  
-	![](img/node.png)
-3.KeyFrame‚Ìì¬
-	2‚Åì¬‚µ‚½ƒm[ƒh‚ðƒNƒŠƒbƒN‚µAƒm[ƒh‚²‚Æ‚ÌƒL[ƒtƒŒ[ƒ€‚ðÝ’è‚µ‚Ü‚·  
-	¶ã‚Ì”Žš‚ªŒ»Ý‚ÌƒtƒŒ[ƒ€‚Å,-/+ƒ{ƒ^ƒ“‚ð‰Ÿ‚·‚©’¼Ú“ü—Í‚Å•ÏX‚Å‚«‚Ü‚·  
-	S,R,T‚ª‚»‚ê‚¼‚êScaling,Rotation,Translation‚ÌƒL[ƒtƒŒ[ƒ€‚Å‚·B”’l‚ð“ü—Í‚µ‚½‚ ‚Æ+‚Å’Ç‰ÁA-‚Åíœ‚µ‚Ü‚·B  
-	Ä¶‚Í’†‰›‚Ì£‚Ås‚¢A’âŽ~‚Í¡‚Å‚Å‚«‚Ü‚·
-	![](img/kf.png)
-4.ƒZ[ƒu
-	Åã•”‚Ì—“‚ÉƒpƒX‚ð“ü—Í‚µAsave‚ð‰Ÿ‚µ‚Ü‚·
+ƒ^ƒCƒ‹ƒV[ƒg‚Ì‰æ‘œƒpƒX‚ð“ü—ÍA«ƒ{ƒ^ƒ“‚Å“Ç‚Ýž‚ÞBtileID‚ð-/+‚ÅŒˆ‚ß‚é  
+ŽŸ‚ÉTileRect‚ð“ü—ÍAapply rect ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚ÄŠm’è  
+”CˆÓ‚ÅCenterPoint‚ð“ü—ÍAapply center ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚ÄŠm’è  
+‚»‚Ì‰º‚ÍŒ»Ý‚ÌtileIDƒ^ƒCƒ‹‚ÌƒvƒŒƒrƒ…[‚Å‚·B  
+![](img/tile.png)  
+2.ƒAƒjƒ[ƒVƒ‡ƒ“ƒm[ƒh‚Ìì¬  
+Žqƒm[ƒh‚ð’Ç‰Á‚µ‚½‚¢eƒm[ƒh‚ðƒNƒŠƒbƒN‚µA‰º‚Ì•û‚Ìadd‚ð‰Ÿ‚µ‚ÄŽqƒm[ƒh‚ð’Ç‰Á  
+ƒm[ƒh–¼‚Íƒm[ƒh‚ªƒAƒNƒeƒBƒu‚É‚È‚Á‚Ä‚¢‚é‚Æ‚«(ˆÃ‚¢‚Æ‚«)‚ÉƒL[“ü—Í‚Å•ÏX‚Å‚«‚Ü‚·  
+Šeƒm[ƒh‚É‚Í1‚Â‚Ìtilesheet/tileID‚ðŠ„‚è“–‚Ä‚ç‚ê‚Ü‚·B‰æ‘œƒpƒX–¼‚Æid‚ð“ü—Í‚µAapply tile ‚ð‰Ÿ‚·‚ÆŠ„‚è“–‚Ä‚ª‚Å‚«‚Ü‚·  
+ƒm[ƒh‚²‚Æ‚Ì•`‰æ‡‚ÍÅ‰º•”‚ÌZ=()‚ð•ÏX‚·‚é‚±‚Æ‚Å•ÏX‚Å‚«‚Ü‚·  
+![](img/node.png)  
+3.KeyFrame‚Ìì¬  
+2‚Åì¬‚µ‚½ƒm[ƒh‚ðƒNƒŠƒbƒN‚µAƒm[ƒh‚²‚Æ‚ÌƒL[ƒtƒŒ[ƒ€‚ðÝ’è‚µ‚Ü‚·  
+¶ã‚Ì”Žš‚ªŒ»Ý‚ÌƒtƒŒ[ƒ€‚Å,-/+ƒ{ƒ^ƒ“‚ð‰Ÿ‚·‚©’¼Ú“ü—Í‚Å•ÏX‚Å‚«‚Ü‚·  
+S,R,T‚ª‚»‚ê‚¼‚êScaling,Rotation,Translation‚ÌƒL[ƒtƒŒ[ƒ€‚Å‚·B”’l‚ð“ü—Í‚µ‚½‚ ‚Æ+‚Å’Ç‰ÁA-‚Åíœ‚µ‚Ü‚·B  
+Ä¶‚Í’†‰›‚Ì£‚Ås‚¢A’âŽ~‚Í¡‚Å‚Å‚«‚Ü‚·  
+![](img/kf.png)  
+4.ƒZ[ƒu  
+Åã•”‚Ì—“‚ÉƒpƒX‚ð“ü—Í‚µAsave‚ð‰Ÿ‚µ‚Ü‚·  
 ***
   
   
   
-”½È“_‚½‚­‚³‚ñB
+ƒ\[ƒXƒR[ƒh‚Ì”½È“_‚½‚­‚³‚ñB
