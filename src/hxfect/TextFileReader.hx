@@ -1,4 +1,4 @@
-package;
+package hxfect;
 
 
 #if (cpp || neko)

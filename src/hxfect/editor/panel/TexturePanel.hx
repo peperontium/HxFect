@@ -123,12 +123,12 @@ class TexturePanel extends Sprite{
 	private function _InitPreviewField():Void{
 		
 		_tilePreviewField = new Sprite();
-		_tilePreviewField.scaleX = 0.5;
-		_tilePreviewField.scaleY = 0.5;
+		_tilePreviewField.scaleX = 1;
+		_tilePreviewField.scaleY = 1;
 		_tilePreviewField.x = 4;
 		_tilePreviewField.y = _tileRectPanel.y + _tileRectPanel.height + 15;
 		
-		var checkBMP = Assets.getBitmapData("resource/check.png");
+		var checkBMP = Assets.getBitmapData("resource/check2.png");
 		PreviewField_Size = checkBMP.width;
 		_checkBackGround = new Tilesheet(checkBMP);
 		_checkBackGround.addTileRect(new Rectangle(0,0,checkBMP.width,checkBMP.height));

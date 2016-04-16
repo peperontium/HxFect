@@ -42,7 +42,7 @@ class OrderedIntMap<V> implements haxe.Constraints.IMap<Int,V>{
 		return _map.get(key);
 	}
 	
-	public inline function set(key:Int, value:V):Void {
+	public function set(key:Int, value:V):Void {
 		if (_keys.indexOf(key) == -1){
 			_keys.push(key);
 			_SortKeys();
@@ -63,7 +63,7 @@ class OrderedIntMap<V> implements haxe.Constraints.IMap<Int,V>{
 	}
 	
 	public function iterator():Iterator<V> {
-		return new OrderedIntMapIterator(_map);
+		return new OrderedIntMapIterator(_map,_keys.iterator());
 	}
 	
 	public function toString():String {
@@ -81,16 +81,16 @@ private class OrderedIntMapIterator<V>{
     var _intMap : IntMap<V>;
 	var _keysItr : Iterator<Int>;
 	
-    public function new(intMap:IntMap<V>){
+    public function new(intMap:IntMap<V>,itr:Iterator<Int>){
         _intMap = intMap;
-		_keysItr = intMap.keys();
+		_keysItr = itr;
 	}
 	
     public function hasNext():Bool{
 		return _keysItr.hasNext();
 	}
 	
-    public function next():V{
+    public function next():V {
         return _intMap.get(_keysItr.next());
 	}
 }

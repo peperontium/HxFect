@@ -2,6 +2,7 @@ package hxfect.editor.panel;
 
 import openfl.events.FocusEvent;
 import openfl.events.KeyboardEvent;
+import openfl.events.MouseEvent;
 import openfl.text.*;
 import openfl.ui.Keyboard;
 
@@ -29,7 +30,7 @@ class TextInputField extends TextField{
 		this.height= height;
 		this.text = "";
 		
-		this.addEventListener(FocusEvent.FOCUS_IN, _OnFocusIn);
+		this.addEventListener(MouseEvent.CLICK, _OnFocusIn);
 		this.addEventListener(FocusEvent.FOCUS_OUT, _OnFocusOut);
 		this.addEventListener(KeyboardEvent.KEY_DOWN,_KeyInput);
 	}
@@ -37,17 +38,17 @@ class TextInputField extends TextField{
 	private function _KeyInput(e:KeyboardEvent):Void{
 		if(e.keyCode == Keyboard.BACKSPACE){
 			this.text = this.text.substr(0, this.text.length - 1);
-		}else {
+		}else{
 			this.text += String.fromCharCode(e.charCode);
 		}
 	}
 	
-	private function _OnFocusIn(e:FocusEvent):Void{
+	private function _OnFocusIn(e):Void{
 		this.backgroundColor = GlobalSetting.PushedButtonColor;
 		this.background = true;
 	}
 	
-	private function _OnFocusOut(e:FocusEvent):Void {
+	private function _OnFocusOut(e):Void {
 		this.backgroundColor = GlobalSetting.ButtonColor;
 		this.background = true;
 	}

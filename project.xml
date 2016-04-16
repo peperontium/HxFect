@@ -18,6 +18,7 @@
 	<!-- assets -->
 	<icon path="assets/openfl.svg" />
 	<assets path="assets/img" rename="img" />
+	<assets path="assets/ef" rename="ef" />
 	<assets path="assets/resource" rename="resource" />
 	
 	<!-- edittor mode -->

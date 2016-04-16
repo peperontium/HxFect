@@ -31,12 +31,12 @@ class TextButton extends Sprite{
 		_pushedProcedure = procedure;
 	}
 	
-	private function _OnPushed(e:MouseEvent):Void{
+	private function _OnPushed(e:MouseEvent):Void {
 		_text.backgroundColor = GlobalSetting.PushedButtonColor;
 		_text.background = true;
 	}
 	
-	private function _OnLeaved(e:MouseEvent):Void{
+	private function _OnLeaved(e:MouseEvent):Void {
 		_text.backgroundColor = GlobalSetting.ButtonColor;
 		_text.background = true;
 		

@@ -432,7 +432,7 @@ private class NodeButton extends Sprite{
 		
 		if(e.keyCode == Keyboard.BACKSPACE){
 			_nodeNameText.text = _nodeNameText.text.substr(0, _nodeNameText.text.length - 1);
-		}else {
+		}else if(e.keyCode >= Keyboard.NUMBER_0 && e.keyCode <= Keyboard.Z){
 			_nodeNameText.text += String.fromCharCode(e.charCode);
 		}
 		_refEffectNode.name = _nodeNameText.text;

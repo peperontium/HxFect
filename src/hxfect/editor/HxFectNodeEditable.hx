@@ -28,7 +28,7 @@ class HxFectNodeEditable extends HxFectNode{
 		
 	public function set_zDepth(z:Int):Int {
 		if(_zDepth != z){
-			_managerEffect.unregisterRenderNode(this);
+			this._managerEffect.unregisterRenderNode(this);
 			_zDepth = z;
 			_managerEffect.registerRenderNode(this);
 		}else{

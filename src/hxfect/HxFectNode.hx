@@ -123,6 +123,7 @@ class HxFectNode {
 		var vals:Array<String> = data.readLine().split(",");
 		node._tileSheet = tileTable.get(vals[0]);
 		node._tileID = Std.parseInt(vals[1]);
+		node._tileDrawData[2] = node._tileID;
 		node._zDepth = Std.parseInt(vals[2]);
 		
 		
