@@ -37,8 +37,4 @@ class MathUtil{
 	public static inline function toDegree(radian:Float):Float{
 		return radian * 180/ Math.PI;
 	}
-
-	public static inline function sqr(n:Float):Float{
-		return n * n;
-	}
 }

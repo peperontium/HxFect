@@ -41,7 +41,7 @@ class HxFect{
 		return Math.pow(MathUtil.square(_transformMtx.a) + MathUtil.square(_transformMtx.b),0.5);
 	}
 	private inline function set_scaling(s:Float):Float {
-		_transformMtx.scale(s);
+		_transformMtx.scale(s,s);
 		return (s);
 	}
 	

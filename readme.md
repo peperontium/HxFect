@@ -3,7 +3,7 @@ Haxe.Openflã‚Å“®‚­ƒXƒvƒ‰ƒCƒgƒAƒjƒ[ƒVƒ‡ƒ“ì¬ƒc[ƒ‹E‚¨‚æ‚ÑÄ¶ƒ‰ƒCƒuƒ‰ƒŠŽŽì”
 
 ## Ú×
 Tilesheet‚ð—p‚¢‚½ƒXƒvƒ‰ƒCƒgƒAƒjƒ[ƒVƒ‡ƒ“ƒGƒfƒBƒ^‚Å‚·B‚»‚Ì‚Ü‚ÜƒRƒ“ƒpƒCƒ‹‚·‚é‚ÆƒGƒfƒBƒ^‚ªAsrc\\hxfect\\editor‚ðíœ‚·‚é‚±‚Æ‚ÅÄ¶‹@”\‚Ì‚Ý‚ð‘g‚Ýž‚ß‚Ü‚·B  
-ˆê‰žƒGƒfƒBƒ^‚Ìƒ\[ƒX‚àŒöŠJ‚µ‚Ä‚ ‚è‚Ü‚·‚ªA”ñí‚É‚·‚Ï‚°‚Á‚¿[‚Èˆ×‰ü‘¢‚ª“ï‚µ‚¢‚±‚Æ‚É‚È‚Á‚Ä‚µ‚Ü‚Á‚Ä‚¢‚Ü‚·
+ˆê‰žƒGƒfƒBƒ^‚Ìƒ\[ƒX‚àŒöŠJ‚µ‚Ä‚ ‚è‚Ü‚·‚ªA”ñí‚É‚·‚Ï‚°‚Á‚¿[‚Èˆ×‰ü‘¢‚ª“ï‚µ‚¢‚±‚Æ‚É‚È‚Á‚Ä‚µ‚Ü‚Á‚Ä‚¢‚Ü‚·  
 ƒAƒjƒ[ƒVƒ‡ƒ“‚Í60F’PˆÊ‚Åƒ‹[ƒvor’âŽ~‚ðÝ’è‚Å‚«‚Ü‚·
 
 ## ƒGƒfƒBƒ^Žg‚¢•û
@@ -32,4 +32,4 @@ S,R,T‚ª‚»‚ê‚¼‚êScaling,Rotation,Translation‚ÌƒL[ƒtƒŒ[ƒ€‚Å‚·B”’l‚ð“ü—Í‚µ‚½‚ ‚
   
   
   
-ƒ\[ƒXƒR[ƒh‚Ì”½È“_‚½‚­‚³‚ñB
+”½È“_‚½‚­‚³‚ñB
