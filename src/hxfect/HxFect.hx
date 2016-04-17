@@ -38,16 +38,22 @@ class HxFect{
 	
 	public var scaling(get, set):Float;
 	private inline function get_scaling():Float{
-		return _transformMtx.a;
+		return Math.pow(MathUtil.square(_transformMtx.a) + MathUtil.square(_transformMtx.b),0.5);
 	}
 	private inline function set_scaling(s:Float):Float {
-		_transformMtx.a = s;
-		_transformMtx.b = s;
-		_transformMtx.c = s;
-		_transformMtx.d = s;
-		return _transformMtx.a;
+		_transformMtx.scale(s);
+		return (s);
 	}
 	
+	///	rotation parameter(radian)
+	public var rotation(get, set):Float;
+	private inline function get_rotation():Float{
+		return(Math.acos(_transformMtx.a));
+	}
+	private inline function set_rotation(r:Float ):Float {
+		_transformMtx.rotate(r);
+		return r;
+	}
 	
 	public var name(get, null):String;
 	private inline function get_name():String{
