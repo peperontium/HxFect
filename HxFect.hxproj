@@ -20,16 +20,16 @@
     <class path="C:\Users\satoshi\openfl\lime\2,9,1" />
     <class path="src" />
     <class path="C:\Users\satoshi\openfl\openfl\3,6,1\extern" />
-    <class path="bin\windows\neko\haxe" />
+    <class path="bin\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="openfl=3.6.1&#xA;lime=2.9.1&#xA;APP_EDITOR&#xA;openfl-next&#xA;tools=2.9.1&#xA;no-compilation&#xA;native&#xA;lime-native&#xA;openfl-native&#xA;windows&#xA;desktop&#xA;display" />
+    <option directives="openfl=3.6.1&#xA;lime=2.9.1&#xA;APP_EDITOR&#xA;openfl-next&#xA;tools=2.9.1&#xA;no-compilation&#xA;openfl-flash&#xA;web&#xA;display" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--remap flash:openfl&#xA;#--macro keep(&quot;Main&quot;)" />
+    <option additional="-swf-version 11.2" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

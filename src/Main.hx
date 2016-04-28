@@ -20,8 +20,8 @@ class Main extends Sprite {
 		this.addChild(new EditorWindow());
 		this.addChild(new FPS(500, 10, 0xffffff));
 		
-		/*
-		var hxfectManager = new HxFectManager();
+		
+		/*var hxfectManager = new HxFectManager();
 		var hxfect = HxFect.CreateFromFile("ef/runaty.hxef");
 		hxfectManager.registerEffect(hxfect, 0);
 		
@@ -33,7 +33,7 @@ class Main extends Sprite {
 			hxfectManager.updateAll();
 			hxfectManager.renderAll(this.graphics);
 			}
-		);*/
+		);/**/
 		
 		}
 	

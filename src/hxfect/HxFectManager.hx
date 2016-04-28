@@ -1,7 +1,6 @@
 package hxfect;
 
 
-import haxe.ds.IntMap;
 import haxe.ds.StringMap;
 import openfl.display.Graphics;
 import openfl.display.Tilesheet;
@@ -21,7 +20,7 @@ class HxFectManager{
 	
 	public function new() {
 		_effects = new List<HxFect>();
-		_zSortedRenderEffects = new OrderedIntMap<List<HxFect>>();
+		_zSortedRenderEffects = new OrderedIntMap<List<HxFect>>(false);
 		_zDepthTable = new StringMap<Int>();
 	}
 	

@@ -38,20 +38,22 @@ class HxFect{
 	
 	public var scaling(get, set):Float;
 	private inline function get_scaling():Float{
-		return Math.pow(MathUtil.square(_transformMtx.a) + MathUtil.square(_transformMtx.b),0.5);
+		return _scaling;
 	}
 	private inline function set_scaling(s:Float):Float {
-		_transformMtx.scale(s,s);
+		_scaling = s;
+		_transformDirty = true;
 		return (s);
 	}
 	
 	///	rotation parameter(radian)
 	public var rotation(get, set):Float;
 	private inline function get_rotation():Float{
-		return(Math.acos(_transformMtx.a));
+		return _rotation;
 	}
 	private inline function set_rotation(r:Float ):Float {
-		_transformMtx.rotate(r);
+		_rotation = r;
+		_transformDirty = true;
 		return r;
 	}
 	
@@ -77,7 +79,11 @@ class HxFect{
 	///	描画用z順ノード
 	private var _zSortedRenderNodes : OrderedIntMap<List<HxFectNode>>;
 	
+	private var _scaling : Float;
+	private var _rotation : Float;
+	
 	private var _transformMtx : Matrix;
+	private var _transformDirty : Bool;
 	
 	private var _isLoop:Bool;
 	private var _isPlaying : Bool;
@@ -88,11 +94,15 @@ class HxFect{
 	
 	
 	private function new() {
-		_zSortedRenderNodes = new OrderedIntMap<List<HxFectNode>>();
+		_zSortedRenderNodes = new OrderedIntMap<List<HxFectNode>>(false);
 		
 		_name = "";
 		
+		_scaling = 1.0;
+		_rotation = 0.0;
+		
 		_transformMtx = new Matrix();
+		_transformDirty = false;
 		
 		_isLoop = false;
 		_isPlaying = true;
@@ -102,10 +112,10 @@ class HxFect{
 	}
 	
 	public inline function registerRenderNode(node:HxFectNode):Void{
-		if(_zSortedRenderNodes.exists(-node.zDepth) == false){
-			_zSortedRenderNodes.set(-node.zDepth,new List<HxFectNode>());
+		if(_zSortedRenderNodes.exists(node.zDepth) == false){
+			_zSortedRenderNodes.set(node.zDepth,new List<HxFectNode>());
 		}
-		_zSortedRenderNodes.get(-node.zDepth).add(node);
+		_zSortedRenderNodes.get(node.zDepth).add(node);
 	}
 	
 	public inline function setTime(time:Int):Void{
@@ -129,12 +139,21 @@ class HxFect{
 			}
 		}
 		
-		if(!_isPlaying){
-			return true;
+		if(_transformDirty){
+			var x = _transformMtx.tx;
+			var y = _transformMtx.ty;
+			_transformMtx.identity();
+			_transformMtx.scale(_scaling, _scaling);
+			_transformMtx.rotate(_rotation);
+			_transformMtx.translate(x, y);
+			_transformDirty = false;
 		}
 		
 		_rootNode.update(_transformMtx,_timer);
-		_timer++;
+		
+		if(_isPlaying){
+			_timer++;
+		}
 		
 		return true;
 	}
@@ -151,6 +170,24 @@ class HxFect{
 			}
 		}
 		
+	}
+	
+	public function clone():HxFect{
+		var clone = new HxFect();
+		
+		clone._name 	= this._name;
+		clone._scaling 	= this._scaling;
+		clone._rotation = this._rotation;
+		clone._transformMtx 	= this._transformMtx.clone();
+		clone._transformDirty	= this._transformDirty;
+		clone._isLoop 	= this._isLoop;
+		clone._isPlaying = this._isPlaying;
+		clone._isVisible = this._isVisible;
+		
+		clone._zSortedRenderNodes = new OrderedIntMap<List<HxFectNode>>(false);
+		clone._rootNode = this._rootNode.cloneTree(clone);
+		
+		return clone;
 	}
 	
 	public static function CreateFromFile(path:String):HxFect{

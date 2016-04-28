@@ -1,6 +1,7 @@
 package hxfect;
 
-import haxe.ds.IntMap;
+using Lambda;
+
 import haxe.ds.StringMap;
 import openfl.display.Graphics;
 import openfl.display.Tilesheet;
@@ -73,6 +74,31 @@ class HxFectNode {
 			_tileSheet.drawTiles(graphics,_tileDrawData,true,Tilesheet.TILE_TRANS_2x2);
 	}
 	
+	/**
+	 * ノードツリーの階層ごとclone
+	 * @param	clonedManagerEffect	適用する先のclone済みHxFect
+	 * @return	このオブジェクトのクローン
+	 */
+	public function cloneTree(clonedManagerEffect:HxFect):HxFectNode{
+		var clone = new HxFectNode();
+		
+		clone._name		 = this._name;
+		clone._tileSheet = this._tileSheet;
+		clone._tileID	 = this._tileID;
+		clone._tileDrawData = this._tileDrawData.copy();
+		clone._zDepth 	 = this._zDepth;
+		clone._keyframe	 = this._keyframe;
+		clone._childrenNode = this._childrenNode;
+		
+		clone._childrenNode = new List<HxFectNode>();
+		for(node in this._childrenNode){
+			clone._childrenNode.add(node.cloneTree(clonedManagerEffect));
+		}
+		
+		clonedManagerEffect.registerRenderNode(clone);
+		
+		return clone;
+	}
 	
 	private static function _GetKeyFrameFromData(data:TextFileReader):KeyFrame{
 		var vals:Array<String> = [];
