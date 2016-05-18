@@ -50,7 +50,7 @@ class HxFectEditable extends HxFect {
 	}
 	
 	public inline function unregisterRenderNode(node:HxFectNode):Void{
-		_zSortedRenderNodes.get(-node.zDepth).remove(node);
+		_zSortedRenderNodes.get(node.zDepth).remove(node);
 	}
 	
 	

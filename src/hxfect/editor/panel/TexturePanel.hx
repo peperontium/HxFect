@@ -11,6 +11,7 @@ import openfl.geom.Rectangle;
 import openfl.geom.Point;
 import openfl.text.TextField;
 import openfl.text.TextFieldAutoSize;
+import openfl.utils.ByteArray;
 
 
 /**
@@ -48,13 +49,27 @@ class TexturePanel extends Sprite{
 	
 	private var _onTileIDChangedProcedure : Int->Void;
 	
+	private function _GetBitmapData(path:String):BitmapData{
+		
+		var bmpData : BitmapData = null;
+		#if flash
+		bmpData = Assets.getBitmapData(tileName);
+		#else
+		if (sys.FileSystem.exists(path)){
+//			trace('file exist( path : $path )');
+			bmpData = BitmapData.fromFile(path);
+//			trace('Is bmpData null? : ${bmpData == null}');
+		}
+		#end
+		return bmpData;
+	}
 	
 	private function _ReloadTexture():Void {
 		//_tilesheetCache.set(_tileName, new TileCache(_tileSheet, _tileRectPanel.tileRects, _tileRectPanel.tileCenters));
 		
 		if(_tilesheetCache.exists(_pathInputPanel.texturePath)){
 			_tileName = _pathInputPanel.texturePath;
-			_tileBMP = Assets.getBitmapData(_pathInputPanel.texturePath);
+			_tileBMP = _GetBitmapData(_pathInputPanel.texturePath);
 			var data = _tilesheetCache.get(_pathInputPanel.texturePath);
 			_tileSheet = data.tilesheet;
 			_tileRectPanel.tileRects = data.tileRects;
@@ -65,7 +80,7 @@ class TexturePanel extends Sprite{
 			
 		}
 		
-		_tileBMP = Assets.getBitmapData(_pathInputPanel.texturePath);
+		_tileBMP = _GetBitmapData(_pathInputPanel.texturePath);
 		if (_tileBMP == null) {
 			return;
 		}
@@ -190,7 +205,7 @@ class TexturePanel extends Sprite{
 			if(buf == "[tile]"){
 				var tileName = data.readLine();
 				var tileCache = new TileCache(
-						new Tilesheet(Assets.getBitmapData(tileName)), new Vector<Rectangle>(), new Vector<Point>()
+						new Tilesheet(_GetBitmapData(tileName)), new Vector<Rectangle>(), new Vector<Point>()
 					);
 					
 				buf = data.readLine();

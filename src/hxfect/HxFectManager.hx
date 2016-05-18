@@ -1,7 +1,7 @@
 package hxfect;
 
 
-import haxe.ds.StringMap;
+import haxe.ds.ObjectMap;
 import openfl.display.Graphics;
 import openfl.display.Tilesheet;
 
@@ -14,14 +14,14 @@ class HxFectManager{
 	private var _effects : List<HxFect>;
 	///	描画用z順エフェクト
 	private var _zSortedRenderEffects : OrderedIntMap<List<HxFect>>;
-	///	エフェクト名 => 描画深度 のテーブル
-	private var _zDepthTable : StringMap<Int>;
+	///	エフェクト => 描画深度 のテーブル
+	private var _zDepthTable : ObjectMap<HxFect,Int>;
 	
 	
 	public function new() {
 		_effects = new List<HxFect>();
 		_zSortedRenderEffects = new OrderedIntMap<List<HxFect>>(false);
-		_zDepthTable = new StringMap<Int>();
+		_zDepthTable = new ObjectMap<HxFect,Int>();
 	}
 	
 	public function registerEffect(effect:HxFect,zDepth:Int):Void {
@@ -31,14 +31,14 @@ class HxFectManager{
 			_zSortedRenderEffects.set(zDepth,new List<HxFect>());
 		}
 		
-		_zDepthTable.set(effect.name,zDepth);
+		_zDepthTable.set(effect,zDepth);
 		_zSortedRenderEffects.get(zDepth).add(effect);
 	}
 	
 	public function unregisterEffect(effect:HxFect):Void{
 		_effects.remove(effect);
-		_zSortedRenderEffects.get(_zDepthTable.get(effect.name)).remove(effect);
-		_zDepthTable.remove(effect.name);
+		_zSortedRenderEffects.get(_zDepthTable.get(effect)).remove(effect);
+		_zDepthTable.remove(effect);
 	}
 	
 	public function updateAll():Void{
