@@ -1,6 +1,7 @@
 package hxfect.editor;
 
 import hxfect.HxFect;
+import hxfect.HxFectManager;
 
 import haxe.ds.StringMap;
 import openfl.display.Tilesheet;
@@ -27,13 +28,13 @@ class HxFectEditable extends HxFect {
 		_rootNode = rootNode;	
 	}
 	
-	private inline function new() {
-		super();
+	private inline function new(manager:HxFectManager) {
+		super(manager);
 		
 	}
 
-	public static function CreateForEditor():HxFectEditable{
-		var hxfect = new HxFectEditable();
+	public static function CreateForEditor(manager:HxFectManager):HxFectEditable{
+		var hxfect = new HxFectEditable(manager);
 		
 		hxfect._isLoop = true;
 		

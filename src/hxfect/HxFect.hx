@@ -71,10 +71,16 @@ class HxFect{
 		return (_isVisible);
 	}
 	
+	public var zDepth(get, null):Int;
+	private inline function get_zDepth():Int{
+		return(_zDepth);
+	}
 	
 	private var _name : String;
+	private var _isLoop:Bool;
 	
 	private var _rootNode : HxFectNode;
+	private var _effectManager : HxFectManager;
 	
 	///	描画用z順ノード
 	private var _zSortedRenderNodes : OrderedIntMap<List<HxFectNode>>;
@@ -85,7 +91,9 @@ class HxFect{
 	private var _transformMtx : Matrix;
 	private var _transformDirty : Bool;
 	
-	private var _isLoop:Bool;
+	private var _zDepth : Int;
+	
+	private var _autoUpdate : Bool;
 	private var _isPlaying : Bool;
 	private var _isVisible : Bool;
 	
@@ -93,10 +101,12 @@ class HxFect{
 	
 	
 	
-	private function new() {
+	private function new(manager:HxFectManager) {
 		_zSortedRenderNodes = new OrderedIntMap<List<HxFectNode>>(false);
+		_effectManager = manager;
 		
 		_name = "";
+		_isLoop = false;
 		
 		_scaling = 1.0;
 		_rotation = 0.0;
@@ -104,9 +114,11 @@ class HxFect{
 		_transformMtx = new Matrix();
 		_transformDirty = false;
 		
-		_isLoop = false;
+		_zDepth = 0;
+		
 		_isPlaying = true;
 		_isVisible = true;
+		_autoUpdate = true;
 		
 		_timer = 0;
 	}
@@ -122,12 +134,30 @@ class HxFect{
 		_timer = time;
 	}
 	
-	public inline function play():Void{
+	public function play(zDepth:Int):Void {
+		//	二重再生防ぐ
+		if(_isPlaying){
+			if(zDepth != _zDepth){
+				//	描画深度のみ変更
+				_effectManager.unregisterEffect(this);
+				_effectManager.registerEffect(this);
+			}
+			return;
+		}
+		
 		_isPlaying = true;
+		_zDepth = zDepth;
+		_effectManager.registerEffect(this);
 	}
 	
-	public inline function pause():Void{
+	public inline function setAutoUpdate(state:Bool):Void{
+		_autoUpdate = state;
+	}
+	
+	public inline function stop():Void{
 		_isPlaying = false;
+		_effectManager.unregisterEffect(this);
+		
 	}
 	
 	public function update():Bool {
@@ -151,7 +181,7 @@ class HxFect{
 		
 		_rootNode.update(_transformMtx,_timer);
 		
-		if(_isPlaying){
+		if(_autoUpdate){
 			_timer++;
 		}
 		
@@ -173,7 +203,7 @@ class HxFect{
 	}
 	
 	public function clone():HxFect{
-		var clone = new HxFect();
+		var clone = new HxFect(_effectManager);
 		
 		clone._name 	= this._name;
 		clone._scaling 	= this._scaling;
@@ -190,11 +220,11 @@ class HxFect{
 		return clone;
 	}
 	
-	public static function CreateFromFile(path:String):HxFect{
+	public static function CreateFromFile(path:String, manager:HxFectManager):HxFect{
 		
 		var dataReader = new TextFileReader(path);
 		
-		var hxFect = new HxFect();
+		var hxFect = new HxFect(manager);
 		hxFect._name = path;
 		
 		//	このエフェクトで使う tilesheet名->tilesheet テーブルの作成

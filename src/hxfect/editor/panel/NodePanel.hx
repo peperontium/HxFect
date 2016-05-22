@@ -228,11 +228,11 @@ class NodePanel extends Sprite {
 		_isAnimPlaying = true;
 		_nodeTable = new IntMap<NodeButton>();
 		
-		_effect = HxFectEditable.CreateForEditor();
+		_effect = HxFectEditable.CreateForEditor(_hxfectManager);
 		var rootNode = HxFectNodeEditable.CreateEmptyNode(_effect, null);
 		
 		_effect.setRootNode(rootNode);
-		_hxfectManager.registerEffect(_effect,0);
+		_hxfectManager.registerEffect(_effect);
 		
 		var root = _RegisterNewNode(rootNode);
 		
@@ -337,10 +337,10 @@ class NodePanel extends Sprite {
 		_hxfectManager.unregisterEffect(_effect);
 		
 		_nodeTable = new IntMap<NodeButton>();
-		_effect = HxFectEditable.CreateForEditor();
+		_effect = HxFectEditable.CreateForEditor(_hxfectManager);
 		_effect.x = _effect.y = AnimRenderArea.RENDERAREA_SIZE / 2;
 		
-		_hxfectManager.registerEffect(_effect, 0);
+		_hxfectManager.registerEffect(_effect);
 		
 		var buf = data.readLine();
 		_effect.setRoop(buf == "1");
