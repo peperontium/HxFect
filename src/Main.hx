@@ -23,7 +23,7 @@ class Main extends Sprite {
 		
 		/*var hxfectManager = new HxFectManager();
 		var hxfect = HxFect.CreateFromFile("ef/runaty.hxef",hxfectManager);
-		hxfectManager.registerEffect(hxfect);
+		hxfect.play(0);
 		
 		hxfect.x = 200;
 		hxfect.y = 200;
