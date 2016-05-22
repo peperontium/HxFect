@@ -62,15 +62,6 @@ class HxFect{
 		return _name;
 	}
 	
-	public var visible(get, set):Bool;
-	private inline function get_visible():Bool{
-		return (_isVisible);
-	}
-	private inline function set_visible(val : Bool):Bool {
-		_isVisible = val;
-		return (_isVisible);
-	}
-	
 	public var zDepth(get, null):Int;
 	private inline function get_zDepth():Int{
 		return(_zDepth);
@@ -95,7 +86,6 @@ class HxFect{
 	
 	private var _autoUpdate : Bool;
 	private var _isPlaying : Bool;
-	private var _isVisible : Bool;
 	
 	private var _timer : Int;
 	
@@ -117,7 +107,6 @@ class HxFect{
 		_zDepth = 0;
 		
 		_isPlaying = true;
-		_isVisible = true;
 		_autoUpdate = true;
 		
 		_timer = 0;
@@ -190,10 +179,6 @@ class HxFect{
 	
 	public function render(graphics : Graphics):Void{
 		
-		if(!_isVisible){
-			return;
-		}
-		
 		for(zEffectNodes in _zSortedRenderNodes){
 			for(effectnode in zEffectNodes){
 				effectnode.render(graphics);
@@ -212,7 +197,6 @@ class HxFect{
 		clone._transformDirty	= this._transformDirty;
 		clone._isLoop 	= this._isLoop;
 		clone._isPlaying = this._isPlaying;
-		clone._isVisible = this._isVisible;
 		
 		clone._zSortedRenderNodes = new OrderedIntMap<List<HxFectNode>>(false);
 		clone._rootNode = this._rootNode.cloneTree(clone);
