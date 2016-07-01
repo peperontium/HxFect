@@ -106,7 +106,7 @@ class HxFect{
 		
 		_zDepth = 0;
 		
-		_isPlaying = true;
+		_isPlaying = false;
 		_autoUpdate = true;
 		
 		_timer = 0;
@@ -143,10 +143,11 @@ class HxFect{
 		_autoUpdate = state;
 	}
 	
-	public inline function stop():Void{
-		_isPlaying = false;
-		_effectManager.unregisterEffect(this);
-		
+	public inline function stop():Void {
+		if(_isPlaying){
+			_isPlaying = false;
+			_effectManager.unregisterEffect(this);
+		}
 	}
 	
 	public function update():Bool {
@@ -240,8 +241,9 @@ class HxFect{
 		while(buf != "[/tiles]"){
 			if(buf == "[tile]"){
 				var tileName = reader.readLine();
+				//var tilesheet = new Tilesheet(openfl.display.BitmapData.fromFile(tileName));
 				var tilesheet = new Tilesheet(Assets.getBitmapData(tileName));
-					
+				
 				buf = reader.readLine();
 				while (buf != "[/tile]") {
 					var tiledata = buf.split(",");

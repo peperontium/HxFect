@@ -26,9 +26,11 @@ class NumberInputField extends TextInputField{
 			}
 		}else if(e.keyCode >= Keyboard.NUMBER_0 && e.keyCode <= Keyboard.NUMBER_9){
 			///	0~9
-			this.text = Std.string(Std.parseInt(this.text + String.fromCharCode(e.charCode)));
+			this.text = Std.string(Std.parseFloat(this.text + String.fromCharCode(e.charCode)));
 		}else if(e.keyCode == Keyboard.MINUS && this.text == "0"){
 			this.text = "-";
+		}else if(e.keyCode == Keyboard.PERIOD && this.text.indexOf(".") == -1){
+			this.text += ".";
 		}
 	}
 }
