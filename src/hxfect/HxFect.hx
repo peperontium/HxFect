@@ -36,12 +36,21 @@ class HxFect{
 		return _transformMtx.ty;
 	}
 	
-	public var scaling(get, set):Float;
-	private inline function get_scaling():Float{
-		return _scaling;
+	public var scalingX(get, set):Float;
+	private inline function get_scalingX():Float{
+		return _scalingX;
 	}
-	private inline function set_scaling(s:Float):Float {
-		_scaling = s;
+	private inline function set_scalingX(s:Float):Float {
+		_scalingX = s;
+		_transformDirty = true;
+		return (s);
+	}
+	public var scalingY(get, set):Float;
+	private inline function get_scalingY():Float{
+		return _scalingY;
+	}
+	private inline function set_scalingY(s:Float):Float {
+		_scalingY = s;
 		_transformDirty = true;
 		return (s);
 	}
@@ -76,7 +85,8 @@ class HxFect{
 	///	描画用z順ノード
 	private var _zSortedRenderNodes : OrderedIntMap<List<HxFectNode>>;
 	
-	private var _scaling : Float;
+	private var _scalingX : Float;
+	private var _scalingY : Float;
 	private var _rotation : Float;
 	
 	private var _transformMtx : Matrix;
@@ -98,7 +108,8 @@ class HxFect{
 		_name = "";
 		_isLoop = false;
 		
-		_scaling = 1.0;
+		_scalingX = 1.0;
+		_scalingY = 1.0;
 		_rotation = 0.0;
 		
 		_transformMtx = new Matrix();
@@ -125,9 +136,10 @@ class HxFect{
 	
 	public function play(zDepth:Int):Void {
 		//	二重再生防ぐ
-		if(_isPlaying){
+		if (_isPlaying) {
+			_timer = 0;
 			if(zDepth != _zDepth){
-				//	描画深度のみ変更
+				//	描画深度の変更
 				_effectManager.unregisterEffect(this);
 				_effectManager.registerEffect(this);
 			}
@@ -163,7 +175,7 @@ class HxFect{
 			var x = _transformMtx.tx;
 			var y = _transformMtx.ty;
 			_transformMtx.identity();
-			_transformMtx.scale(_scaling, _scaling);
+			_transformMtx.scale(_scalingX, _scalingY);
 			_transformMtx.rotate(_rotation);
 			_transformMtx.translate(x, y);
 			_transformDirty = false;
@@ -192,7 +204,8 @@ class HxFect{
 		var clone = new HxFect(_effectManager);
 		
 		clone._name 	= this._name;
-		clone._scaling 	= this._scaling;
+		clone._scalingX = this._scalingX;
+		clone._scalingY = this._scalingY;
 		clone._rotation = this._rotation;
 		clone._transformMtx 	= this._transformMtx.clone();
 		clone._transformDirty	= this._transformDirty;
